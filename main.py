@@ -46,49 +46,27 @@ def process_image(image_path, model, display_width=700, display_height=600):
 def handle_directory(directory_path, model):
     image_extensions = ('.png', '.jpg', '.jpeg', '.bmp', '.tiff', '.webp')
     image_paths = [os.path.join(directory_path, f) 
-                  for f in sorted(os.listdir(directory_path)) 
-                  if f.lower().endswith(image_extensions)]
-    
+                   for f in sorted(os.listdir(directory_path)) 
+                   if f.lower().endswith(image_extensions)]
+
     if not image_paths:
         print("No se encontraron imágenes en el directorio")
         return
-    
-    current_idx = 0
-    total_images = len(image_paths)
-    
-    cv2.namedWindow('Predicciones', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('Predicciones', 700, 600)
-    
-    while True:
-        current_path = image_paths[current_idx]
-        processed_img, _ = process_image(current_path, model)
-        
-        if processed_img is None:
-            current_idx = (current_idx + 1) % total_images
-            continue
-        
-        cv2.putText(processed_img, f'Imagen {current_idx+1}/{total_images}', (10, 60), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-        
-        cv2.imshow('Predicciones', processed_img)
-        
-        key = cv2.waitKey(0)
-        print(f'key: {key}')
-        if key == 27 or key == ord('q'):
-            break
-        elif key == 81 or key == 82 or key == ord('a'):
-            current_idx = (current_idx - 1) % total_images
-        elif key == 83 or key == 84 or key == ord('d'):
-            current_idx = (current_idx + 1) % total_images
 
-    cv2.destroyAllWindows()
+    with open("resultados.txt", "w") as f:
+        for idx, image_path in enumerate(image_paths):
+            _, num_boxes = process_image(image_path, model)
+            image_name = os.path.basename(image_path)
+            f.write(f"{image_name}: {num_boxes} cows\n")
+            print(f"{image_name}: {num_boxes} cows")
+
 
 def handle_single_image(image_path, model):
-    processed_img, _ = process_image(image_path, model)
-    if processed_img is not None:
-        cv2.imshow('Predicciones', processed_img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    _, num_boxes = process_image(image_path, model)
+    image_name = os.path.basename(image_path)
+    with open("resultados.txt", "w") as f:
+        f.write(f"{image_name}: {num_boxes} cows\n")
+    print(f"{image_name}: {num_boxes} cows")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

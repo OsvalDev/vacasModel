@@ -1,4 +1,4 @@
-# 🐄 Detector de Vacas con YOLO y OpenCV
+# 🐄 Detector de Vacas con YOLO
 
 Este proyecto utiliza un modelo entrenado de YOLOv8 (`bestGeneral.pt`) para detectar vacas en imágenes o directorios completos de imágenes.
 

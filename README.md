@@ -5,6 +5,7 @@ Este proyecto utiliza un modelo entrenado de YOLOv8 (`bestGeneral.pt`) para dete
 ## 📦 Requisitos
 
 - Python 3.8 o superior
+- - Raspberry Pi (se recomienda modelo 4 con al menos 4 GB de RAM)
 - Sistema operativo: Raspberry Pi OS, Ubuntu o similar
 - Dependencias:
   - `ultralytics`

@@ -3,6 +3,7 @@ import cv2
 import sys
 import os
 from pathlib import Path
+from datetime import datetime
 
 def process_image(image_path, model, display_width=700, display_height=600):
     image = cv2.imread(image_path)
@@ -54,8 +55,10 @@ def handle_directory(directory_path, model):
         print("No se encontraron imágenes en el directorio")
         return
 
-    downloads_folder = str(Path.home() / "Downloads")
-    output_path = os.path.join(downloads_folder, "resultados.txt")
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    output_dir = os.path.join(os.path.dirname(__file__), "outputs")
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, f"resultados_{timestamp}.txt")
 
     with open(output_path, "w") as f:
         for idx, image_path in enumerate(image_paths):
@@ -71,8 +74,10 @@ def handle_single_image(image_path, model):
     _, num_boxes = process_image(image_path, model)
     image_name = os.path.basename(image_path)
 
-    downloads_folder = str(Path.home() / "Downloads")
-    output_path = os.path.join(downloads_folder, "resultados.txt")
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    output_dir = os.path.join(os.path.dirname(__file__), "outputs")
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, f"resultados_{timestamp}.txt")
 
     with open(output_path, "w") as f:
         f.write(f"{image_name}: {num_boxes} cows\n")

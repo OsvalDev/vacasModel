@@ -29,7 +29,7 @@ Luego instala el resto:
 
 4. **Descargar el repositorio**
     ```bash
-    git clone https://github.com/TU_USUARIO/detector-vacas-yolo.git
+    git clone https://github.com/OsvalDev/vacasModel.git
     cd detector-vacas-yolo
 
 
@@ -46,8 +46,12 @@ El script toma como entrada una imagen o un directorio con imágenes. Detecta va
    python3 main.py ruta/a/directorio/
 
 ## Resultado
-Se genera un archivo dentro de la carpeta outputs/ con el nombre resultados_<timestamp>.txt, por ejemplo:
 
+*¿Dónde ver los resultados?*
+
+1. El programa crea automáticamente una carpeta llamada outputs.
+2. En caso de ya tener una carpeta de "outputs", se genera un archivo dentro de la carpeta outputs/ con el nombre resultados_timestamp.txt, por ejemplo:
+    ```bash
     imagen1.jpg: 3 cows
     imagen2.jpg: 1 cows
     imagen3.jpg: 0 cows
@@ -60,3 +64,21 @@ detector-vacas-yolo/
 ├── main.py                 # Script principal
 ├── outputs/                # Carpeta donde se guardan los resultados
 └── README.md               # Este archivo
+```
+
+⚠️ **Solución de Problemas Comunes**
+| Problema                      | Solución                                                                                  |
+|------------------------------|-------------------------------------------------------------------------------------------|
+| "No se encontró la imagen"   | Verifica que: 1) La foto esté en la carpeta correcta, 2) Escribiste bien el nombre        |
+| "Error de módulos"           | Ejecuta: `pip install ultralytics opencv-python --force-reinstall`                        |
+| Programa muy lento           | Usa fotos más pequeñas (menos de 2000x2000 píxeles)                                       |
+
+## 📎**Anexo: Comandos Útiles**
+
+| Comando                              | Para qué sirve                                      |
+|-------------------------------------|-----------------------------------------------------|
+| `ls`                                | Ver archivos en la carpeta actual                   |
+| `cd nombre_carpeta`                 | Entrar a una carpeta                                |
+| `python3 --version`                 | Ver versión de Python instalada                     |
+| `scp foto.jpg pi@192.168.1.X:/ruta` | Enviar fotos desde tu PC a la Raspberry             |
+

@@ -1,11 +1,10 @@
 # 🐄 Detector de Vacas con YOLO y OpenCV
 
-Este proyecto utiliza un modelo entrenado de YOLOv8 (`bestGeneral.pt`) para detectar vacas en imágenes o directorios completos de imágenes. El script está preparado para usarse fácilmente incluso en una Raspberry Pi.
+Este proyecto utiliza un modelo entrenado de YOLOv8 (`bestGeneral.pt`) para detectar vacas en imágenes o directorios completos de imágenes.
 
 ## 📦 Requisitos
 
 - Python 3.8 o superior
-- Raspberry Pi (se recomienda modelo 4 con al menos 4 GB de RAM)
 - Sistema operativo: Raspberry Pi OS, Ubuntu o similar
 - Dependencias:
   - `ultralytics`
@@ -48,3 +47,16 @@ El script toma como entrada una imagen o un directorio con imágenes. Detecta va
 
 ## Resultado
 Se genera un archivo dentro de la carpeta outputs/ con el nombre resultados_<timestamp>.txt, por ejemplo:
+
+    imagen1.jpg: 3 cows
+    imagen2.jpg: 1 cows
+    imagen3.jpg: 0 cows
+
+🗂 Estructura del proyecto
+
+```bash
+detector-vacas-yolo/
+├── bestGeneral.pt          # Modelo YOLOv8 personalizado
+├── main.py                 # Script principal
+├── outputs/                # Carpeta donde se guardan los resultados
+└── README.md               # Este archivo

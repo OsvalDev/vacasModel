@@ -2,7 +2,6 @@ from ultralytics import YOLO
 import cv2
 import sys
 import os
-from pathlib import Path
 from datetime import datetime
 
 def process_image(image_path, model, display_width=700, display_height=600):

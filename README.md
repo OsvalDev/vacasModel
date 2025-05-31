@@ -5,14 +5,14 @@ Este proyecto utiliza un modelo entrenado de YOLOv8 (`bestGeneral.pt`) para dete
 ## 📦 Requisitos
 
 - Python 3.8 o superior
-- - Raspberry Pi (se recomienda modelo 4 con al menos 4 GB de RAM)
-- Sistema operativo: Raspberry Pi OS, Ubuntu o similar
+- Raspberry Pi (se recomienda modelo 4 con al menos 4 GB de RAM)
+- Sistema operativo: Raspberry Pi OS, Ubuntu o distribucion basada en Debian. Windows.
 - Dependencias:
   - `ultralytics`
   - `opencv-python`
   - `torch` (instalación depende de la arquitectura)
 
-## 🚀 Instalación
+## 🚀 Instalación (Linux)
 
 1. **Actualizar el sistema**
    ```bash
@@ -31,20 +31,49 @@ Luego instala el resto:
 4. **Descargar el repositorio**
     ```bash
     git clone https://github.com/OsvalDev/vacasModel.git
-    cd detector-vacas-yolo
+    cd vacasModel
+
+## 🚀 Instalación (Windows)
+
+1. **Verificar la instalacion de Python**
+   ```bash
+   python --version
+
+Al ejercutar el comando anterior se espera que se muestre en la consola la version que se tiene instalado de Python. En caso de no ser asi y se muestre algun error; entrar al siguiente enlace para la descarga, realizar la instalacion usando el archivo descargado de la pagina: https://www.python.org/downloads/
+Una vez instalado, reiniciar la consola y verficiar la instalación.
+
+
+2. **Crear un entorno virtual**
+    ```bash
+    python -m venv vacas
+
+3. **Activar el entorno virtual**
+    ```bash
+    .\vacas\Scripts\activate
+
+3. **Instalar dependencias**
+Luego instala el resto:
+    ```bash
+    pip install ultralytics opencv-python torch torchvision torchaudio
+
+4. **Descargar el repositorio**
+    ```bash
+    git clone https://github.com/OsvalDev/vacasModel.git
+    cd vacasModel
 
 
 🧠 ¿Cómo funciona?
 El script toma como entrada una imagen o un directorio con imágenes. Detecta vacas usando un modelo YOLOv8 personalizado y guarda un archivo con el conteo de vacas detectadas
 
 📸 Uso
+La palabra reservada para la ejecucion depende de como se realizo la instalacion, pero se puede sustituir la palabra python por alguna de las siguientes: python, python3, py
 1. **Detectar una sola imagen**
    ```bash
-   python3 main.py ruta/a/la/imagen.jpg
+   python main.py ruta/a/la/imagen.jpg
 
 2. **Detectar en todas las imágenes de un directorio**
    ```bash
-   python3 main.py ruta/a/directorio/
+   python main.py ruta/a/directorio/
 
 ## Resultado
 

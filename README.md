@@ -2,6 +2,9 @@
 
 Este proyecto utiliza un modelo entrenado de YOLOv8 (`bestGeneral.pt`) para detectar vacas en imágenes o directorios completos de imágenes.
 
+## Guia de instalacion y uso de dashboard
+El archivo de readme con la instalacion del dashboard
+
 ## 📦 Requisitos
 
 - Python 3.8 o superior
